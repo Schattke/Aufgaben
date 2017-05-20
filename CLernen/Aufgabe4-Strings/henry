@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StringÜbung
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Schälen());
+        }
+
+        static String Schälen( )
+        {
+            String pfad = Console.ReadLine();
+
+            int index = pfad.LastIndexOf("\\");
+            pfad = pfad.Substring(index+1);
+            index = pfad.LastIndexOf(".");
+            String pfad2 = pfad.Substring(0, index);
+            return pfad2;
+        }
+    }
+}
