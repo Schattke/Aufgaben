@@ -1,0 +1,2 @@
+Warum ist die Kurzschlussauswertung in der folgenden Schleifenbedingung wichtig?
+while (p != null && p.name != "John") {...}
