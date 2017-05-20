@@ -1,1 +1,10 @@
+Übergebene Werte sind typischer:
+Bsp.:
 
+void test(itn wochentag);
+//Es könnten alle int-Werte übergeben werden
+
+enum Wochentag{Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag};
+
+void test(Wochentag wochentag);
+//Es können hier nur Wochentage übergeben werden!!
