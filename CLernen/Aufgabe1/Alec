@@ -1,1 +1,3 @@
 
+Ein enum ist nur über den Namen ansprechbar, das bedeutet das er viel eindeutiger ist.
+Die Typsicherheit ist dadurch höher als bei einem int.
