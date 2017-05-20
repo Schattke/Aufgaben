@@ -1,0 +1,2 @@
+Wenn p = null ist wird die Auswertung an dieser Stelle schon abgebrochen, da somit nicht alle Bedingungen erfüllt werden.
+Das Gleiche gilt für die zweite Bedingung die erffüllt sein muss.
