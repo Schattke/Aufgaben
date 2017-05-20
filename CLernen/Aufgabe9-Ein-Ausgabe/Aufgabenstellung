@@ -1,0 +1,2 @@
+Schreiben Sie ein Programm, das aus einem anderen C#-Programm alle Kommentare entfernt, 
+indem es das Quellprogramm zeichenweise liest und ohne Kommentare wieder zeichenweise auf eine neue Datei schreibt.
