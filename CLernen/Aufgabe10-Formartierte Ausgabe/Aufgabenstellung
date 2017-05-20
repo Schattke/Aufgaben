@@ -1,0 +1,3 @@
+ Erzeugen Sie eine Tabelle der Quadrate und Wurzeln der ersten n natürlichen Zahlen. 
+ Verwenden Sie dazu formatierte Ausgabe. Zur Berechnung der Wurzel können Sie die Funktion Math.Sqrt verwenden. 
+ Übergeben Sie n als Kommandozeilenparameter.
