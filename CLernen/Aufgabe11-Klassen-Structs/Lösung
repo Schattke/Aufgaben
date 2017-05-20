@@ -17,5 +17,6 @@ Eine Struktur darf keine parameterlosen Instanzkonstruktoren deklarieren.
 
 Eine Struktur darf keine Destruktoren deklarieren.
 
-class -> reference type
-struct -> value type
+class -> reference type   Variables of reference types store references to their data (objects)
+struct -> value type      Variables that are based on value types directly contain values.
+                          Assigning one value type variable to another copies the contained value.
