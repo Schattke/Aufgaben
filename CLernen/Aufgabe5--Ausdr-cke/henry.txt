@@ -3,5 +3,5 @@ s+10000000000= 	TypeMissmatch
 i+f = 		TypeMissmatch
 c+1 = fehler/ 	TypeMissmatch
 col+1 = Color	???????
-10*x+(x-'0') = 	-15
+10*x+(x-'0') = 	-15L
 s + 1.0 = short	TypeMissmatch
