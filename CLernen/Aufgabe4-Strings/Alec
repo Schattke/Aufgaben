@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace @string
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(schälen(Console.ReadLine()));
+        }
+        public static String schälen(String path)
+        {
+            //c:\dotnet\samples\myFile.cs
+            path = path.Substring(path.LastIndexOf("\\") + 1);
+            path = path.Substring(0, path.IndexOf("."));
+            return path;
+        }
+    }
+}
