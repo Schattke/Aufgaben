@@ -1,0 +1,3 @@
+Was sind die Vorteile eines Enumerationstyps (z.B. enum Color {red, blue, green}) gegenüber 
+int-Konstanten (z.B. const int red = 0, blue = 1, green = 2;)?
+
