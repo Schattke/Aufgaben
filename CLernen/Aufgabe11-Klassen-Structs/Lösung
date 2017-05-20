@@ -1,4 +1,4 @@
-Strukturen sind Werttypen (Abschnitt 11.3.1).
+Strukturen sind Werttypen.
 
 Alle Strukturtypen erben implizit von der System.ValueType-Klasse.
 
