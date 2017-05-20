@@ -16,3 +16,6 @@ Instanzfelddeklarationen für eine Struktur dürfen keine Variableninitialisieru
 Eine Struktur darf keine parameterlosen Instanzkonstruktoren deklarieren.
 
 Eine Struktur darf keine Destruktoren deklarieren.
+
+class -> reference type
+struct -> value type
