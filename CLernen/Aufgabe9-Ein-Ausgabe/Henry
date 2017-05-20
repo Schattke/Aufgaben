@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Threading.Tasks;
+
+namespace FileOpen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            String path = @"c:\users\agando\desktop\quelltext\quelltext.txt";
+            String path2 = @"c:\users\agando\desktop\quelltext\quelltext2.txt";
+            Lesen(path, path2);
+        }
+
+        static void Lesen(String pfad, String pfad2)
+        {
+            if (!File.Exists(pfad2)){
+
+                foreach (string lines in File.ReadLines(pfad))
+                {
+
+                    if (lines.IndexOf("//") != -1)
+                    {
+                        File.AppendAllText(pfad2, " ");
+                    }
+                    else {
+                        File.AppendAllText(pfad2, lines + Environment.NewLine);
+                    }
+                }
+            }
+        }
+    }
+}
