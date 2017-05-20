@@ -33,3 +33,27 @@ public class EnumTest {
   }
 }
 
+package de.test;
+ 
+import de.jbb.EnumTest;
+ 
+public class Test {
+   
+  public static void main(String args[]) throws Exception {
+     
+    EnumTest et = new EnumTest();
+    et.wortZumTag(EnumTest.Wochentag.MITTWOCH); //AUFRUF
+  }
+}
+
+Eine Besonderheit von Enumerations ist, dass sie auch in einem switch-case-Block verwendet werden dürfen.
+
+switch (tag) {
+  case SAMSTAG:
+  case SONNTAG:
+    System.out.println("Wochenende");
+    break;
+  default:
+    System.out.println("Unter der Woche");
+}
+
