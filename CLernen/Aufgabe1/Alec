@@ -5,9 +5,9 @@ Die Typsicherheit ist dadurch höher als bei einem int.
 
 public class EnumTest {
  
-  public static enum Wochentag {MONTAG, DIENSTAG, MITTWOCH, DONNERSTAG, FREITAG, SAMSTAG, SONNTAG}; // Eindeutige identifizierung
+  public static enum Wochentag {MONTAG, DIENSTAG, MITTWOCH, DONNERSTAG, FREITAG, SAMSTAG, SONNTAG}; // Eindeutige identifizierung (0...6)
    
-  public void wortZumTag(Wochentag tag) {
+  public void wortZumTag(Wochentag tag) { //übergabe das enums
      
     if (tag == Wochentag.MONTAG) {
       System.out.println("Heute fängt die Woche an.");
