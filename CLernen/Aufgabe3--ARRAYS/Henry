@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArrayÜbung
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[,] c = { { 4, 3 }, { 2, 8 } };
+            double[,] d = { { 2, 2 }, { 2, 2 }, { 3,6} };
+
+            double[,] aus = MatrixMult(c,d); 
+
+             for (int i = 0; i < aus.GetLength(0); i++)
+             {
+                 for (int j = 0; j < aus.GetLength(1); j++)
+                 {
+                     Console.WriteLine(aus[i, j]);
+                 }
+             }
+
+        }
+        public static double[,] MatrixMult(double[,] c, double[,] d)
+        {
+            double[,] erg = new double[c.GetLength(0), c.GetLength(1)];
+
+            if (c.Length>d.Length || d.Length>c.Length)
+            {
+                Console.WriteLine("Geht nicht!");
+                return erg;
+            }
+
+            
+                for (int spalte = 1,count =0; spalte >=0; spalte--,count++) {
+                    for (int i=0;i<=1;i++)
+                    {
+                        erg[spalte, i] = c[i-i,i] * d[spalte,i-i]+c[spalte+count,i]*d[spalte,spalte+count]; 
+                    }
+                }
+            
+            return erg;
+        }
+    }
+}
