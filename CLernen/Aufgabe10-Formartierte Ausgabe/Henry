@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace natürlichZahlen
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 1;
+            Natürlich(n);
+        }
+
+        static void Natürlich(int n)
+        {
+            Console.WriteLine("Natürliche Zahl  |    Wurzel   |         Quadrat");
+            for(;n<=10;n++)
+            {
+
+                if(Math.Round(Math.Sqrt(n), 1)%1 != 0 && n!=10)
+                {
+                    Console.WriteLine("       " + n + "         |       " + Math.Round(Math.Sqrt(n), 1) + "   |   " + "           " + n * n);
+                }
+                else
+                {
+                    if (n == 10)
+                    {
+                        Console.WriteLine("       " + n + "        |       " + Math.Round(Math.Sqrt(n), 1) + "   |   " + "           " + n * n);
+                    }
+                    else
+                        Console.WriteLine("       " + n + "         |       " + Math.Round(Math.Sqrt(n), 1) + "     |   " + "           " + n * n);
+                    
+                }
+                
+                
+            }
+        }
+    }
+}
