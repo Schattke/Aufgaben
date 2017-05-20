@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public enum monate {Jan=31, Feb=28, Mär=31, Apr=30, Mai=31, Jun=30, Jul=31, Aug=31, Sep=30, Okt=31, Nov=30, Dez=31};
+
+namespace MonateÜbung
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String monat = Console.ReadLine();
+
+            switch (monat)
+            {
+                case "1":
+                    Console.WriteLine("{0}: {1} ", monate.Jan.ToString("d"));
+                    break;
+                case "2":
+                    Console.WriteLine("{0} ", monate.Feb.ToString("d"));
+                    break;
+                case "3":
+                    Console.WriteLine("{0} ", monate.Mär.ToString("d"));
+                    break;
+                case "4":
+                    Console.WriteLine("{0} ", monate.Apr.ToString("d"));
+                    break;
+                case "5":
+                    Console.WriteLine("{0} ", monate.Mai.ToString("d"));
+                    break;
+                case "6":
+                    Console.WriteLine("{0} ", monate.Jun.ToString("d"));
+                    break;
+                case "7":
+                    Console.WriteLine("{0} ", monate.Jul.ToString("d"));
+                    break;
+                case "8":
+                    Console.WriteLine("{0} ", monate.Aug.ToString("d"));
+                    break;
+                case "9":
+                    Console.WriteLine("{0} ", monate.Sep.ToString("d"));
+                    break;
+                case "10":
+                    Console.WriteLine("{0} ", monate.Okt.ToString("d"));
+                    break;
+                case "11":
+                    Console.WriteLine("{0} ", monate.Dez.ToString("d"));
+                    break;
+                case "12":
+                    Console.WriteLine("{0} ", monate.Dez.ToString("d"));
+                    break;
+            }
+        }
+    }
+}
