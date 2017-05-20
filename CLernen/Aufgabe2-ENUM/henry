@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+public enum Test {Montag, Dienstag};
+
+namespace enumÜbung
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+            einEnum();
+            ausEnum();
+        }
+
+        static void einEnum()
+        {
+            
+            
+        }
+
+        static void ausEnum()
+        {
+            foreach(var value in Enum.GetValues(typeof(Test)) )
+            {
+                Console.WriteLine("Das steht in Test : {0}", value);
+            }
+        }
+    }
+}
