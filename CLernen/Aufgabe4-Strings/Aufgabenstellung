@@ -1,0 +1,2 @@
+Schreiben Sie eine Methode, die aus einem Pfadnamen (z.B. c:\dotnet\samples\myFile.cs) 
+den Dateinamen ohne Verzeichnisse und Dateiendung herausschält (z.B. myFile).
