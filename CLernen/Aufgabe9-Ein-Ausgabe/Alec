@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace File_open
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+         
+            int i = 0;
+            String[] array = new String[1000];
+            foreach (String lines in File.ReadLines("C:\\Users\\Schattke\\Documents\\Visual Studio 2015\\Projects\\enum\\enum\\Program.cs"))
+            {
+
+                if (lines.Contains("//") == true)
+                {
+
+                }
+                else
+                {
+                    array[i] = lines;
+                    i++;
+                  
+                }
+               
+            }
+            System.IO.File.WriteAllLines(@"C:\\Users\\Schattke\\Desktop\\hallo.txt", array);
+        }
+    }
+}
