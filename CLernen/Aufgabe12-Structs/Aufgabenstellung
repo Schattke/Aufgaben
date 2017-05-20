@@ -1,0 +1,7 @@
+Implementieren Sie einen Struct Complex zum Rechnen mit komplexen Zahlen. 
+Sehen Sie geeignete Konstruktoren vor sowie Properties, 
+um auf dem reellen und imaginären Teil einer komplexen Zahl zugreifen zu können. 
+Implementieren Sie mittels Operator Overloading die Addition, Multiplikation und den Vergleich komplexer Zahlen. 
+Sehen Sie auch einen impliziten und einen expliziten Konversionsoperator vor, 
+mit dem man zwischen komplexen Zahlen und double konvertieren kann.
+Überschreiben Sie schließlich auch die von Object geerbten Methoden Equals, ToString und GetHashCode.
