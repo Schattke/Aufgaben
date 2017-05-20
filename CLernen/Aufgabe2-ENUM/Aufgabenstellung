@@ -1,3 +1,2 @@
-gewählten Enumerationstyps in textueller Form. 
-Können Sie die Methoden so allgemein halten, dass Sie damit Werte 
-eines beliebigen Enumerationstyps lesen und schreiben können?
+Studieren Sie die Klasse Enum aus der Online-Dokumentation des .NET-SDK und schreiben Sie zwei Methoden zur Ein- und Ausgabe von Werten eines von Ihnen gewählten Enumerationstyps in textueller Form. 
+Können Sie die Methoden so allgemein halten, dass Sie damit Werte eines beliebigen Enumerationstyps lesen und schreiben können?
