@@ -1,0 +1,17 @@
+Der Compiler führt strenge Typprüfung in Zuweisungen, Ausdrücken und Methodenaufrufen durch.
+Er sorgt dafür, dass nur Werte erlaubter Typen an Variablen zugewiesen werden, dass Operanden von Ausdrücken miteinander typkompatibel sind
+und dass Parameter in der richtigen Anzahl und mit den richtigen Typen übergeben werden.
+
+C# verbietet Zeigerarithmetik sowie Typumwandlungen zwischen Zeigern und anderen Datentypen
+(außer in Codestücken, die als unsafe markiert sind). Dadurch wird garantiert, dass Zeiger immer korrekt auf den Anfang von Objekten zeigen
+oder null sind.
+
+Die CLR liefert einen Ausnahmefehler, wenn auf ein Array mit einem ungültigen Index zugegriffen wird,
+wenn versucht wird, eine Objektvariable zu dereferenzieren, die den Wert null hat oder wenn ein Objekt bei einer Typumwandlung nicht
+den erwarteten Typ hat.
+
+Der Garbage Collector stellt sicher, dass Objekte am Heap erst dann freigegeben werden, wenn sich nicht mehr referenziert werden.
+Ungültige Zeiger oder Speicherleichen werden dadurch vermieden.
+Die Versionierung von .NET-Assemblies stellt sicher, dass alle DLLs in der richtigen Version geladen werden,
+d.h. in der Version, die auch der Compiler für die Typprüfungen verwendet hat.
+Dadurch wird die Gültigkeit der Compilerprüfungen vom Lader garantiert.
