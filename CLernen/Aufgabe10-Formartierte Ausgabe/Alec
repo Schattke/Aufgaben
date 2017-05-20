@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace formatierte_ausgabe
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            WurzelQuader(19);
+        }
+        public static void WurzelQuader(int n){
+            Console.WriteLine("Natürliche\t Quadriert\t Gewurzelt");
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("|{0}\t\t| {1}\t\t| {2}",i,i*i,Math.Sqrt(i).ToString("0.##"));
+            }
+        }
+    }
+}
