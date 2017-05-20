@@ -1,3 +1,35 @@
 
 Ein enum ist nur über den Namen ansprechbar, das bedeutet das er viel eindeutiger ist.
 Die Typsicherheit ist dadurch höher als bei einem int.
+
+
+public class EnumTest {
+ 
+  public static enum Wochentag {MONTAG, DIENSTAG, MITTWOCH, DONNERSTAG, FREITAG, SAMSTAG, SONNTAG}; // Eindeutige identifizierung
+   
+  public void wortZumTag(Wochentag tag) {
+     
+    if (tag == Wochentag.MONTAG) {
+      System.out.println("Heute fängt die Woche an.");
+    }
+    else if (tag == Wochentag.DIENSTAG) {
+      System.out.println("Für die meisten Deutschen der schlimmste Tag der Woche.");
+    }
+    else if (tag == Wochentag.MITTWOCH) {
+      System.out.println("Die Hälfte ist schong geschafft.");
+    }
+    else if (tag == Wochentag.DONNERSTAG) {
+      System.out.println("Durchhalten! Bald geht's ins Wochenende!");
+    }
+    else if (tag == Wochentag.FREITAG) {
+      System.out.println("WOCHENENDE!!!");
+    }
+    else if (tag == Wochentag.SAMSTAG) {
+      System.out.println("Endlich ausschlafen ...");
+    }
+    else if (tag == Wochentag.SONNTAG) {
+      System.out.println("Noch ein bisschen entspannen, bevor die neue Woche anfängt.");
+    }
+  }
+}
+
