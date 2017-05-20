@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Switch
+{
+    class Program
+    {
+        public enum Monate
+        {
+            Januar,
+            Februar,
+            März,
+            April,
+            Mai,
+            Juni,
+            Juli,
+            August,
+            September,
+            Oktober,
+            November,
+            Dezember
+        }
+        static void Main(string[] args)
+        {
+            Monate m = Monate.Januar;
+            Console.WriteLine(berechneMonat(m));
+        }
+        public static int berechneMonat(Monate m)
+        {
+            switch(m)
+            {
+                case Monate.Januar:{ return 31; }break;
+                case Monate.Februar:{ return 28; } break;
+                case Monate.März:{ return 31; } break;
+                case Monate.April:{ return 30; } break;
+                case Monate.Mai: { return 31; } break;
+                case Monate.Juni:{ return 30; } break;
+                case Monate.Juli: { return 31; } break;
+                case Monate.August:{ return 31; } break;
+                case Monate.September: { return 30; } break;
+                case Monate.Oktober: { return 31; } break;
+                case Monate.November: { return 30; } break;
+                case Monate.Dezember: { return 31;} break;
+            }
+            return 0;
+        }
+    }
+}
