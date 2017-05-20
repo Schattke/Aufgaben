@@ -1,1 +1,12 @@
 
+Was ist der Ergebnistyp folgender Ausdrücke:
+short s = 1; int i = 2; long x = 3; float f = 4f; 
+char c = 'a'; Color col = Color.red;
+... s + 1 ... = (int to short) Typkonvertierungsfehler
+... s + 100000000000 ... = (int to short) Typkonvertierungsfehler + zu Groß
+... i + f ... =  falsch 
+... c + 1 ... = Fehler
+... col + 1 ... = es bleibt color
+... 10 * x + (x - '0') ... = 15 long
+... s + 1.0 ... = (float to short)Typkonvertierungsfehler
+
