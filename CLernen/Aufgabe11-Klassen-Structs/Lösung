@@ -1,0 +1,18 @@
+Strukturen sind Werttypen (Abschnitt 11.3.1).
+
+Alle Strukturtypen erben implizit von der System.ValueType-Klasse.
+
+Durch die Zuweisung zu einer Variablen mit dem Strukturtyp wird eine Kopie des zugewiesenen Wertes erstellt.
+
+Der Standardwert für eine Struktur wird erzeugt, indem für alle Werttypfelder der Standardwert 
+und für alle Verweistypfelder null festgelegt wird.
+
+Zur Konvertierung zwischen einem Strukturtyp und object werden Boxing- und Unboxingoperationen verwendet.
+
+Im Kontext von Strukturen hat this eine andere Bedeutung.
+
+Instanzfelddeklarationen für eine Struktur dürfen keine Variableninitialisierungen enthalten.
+
+Eine Struktur darf keine parameterlosen Instanzkonstruktoren deklarieren.
+
+Eine Struktur darf keine Destruktoren deklarieren.
