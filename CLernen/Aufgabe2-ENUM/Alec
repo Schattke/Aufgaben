@@ -1,1 +1,35 @@
-tt
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace testkonsole
+{
+    class Program
+    {
+        public enum Auto
+        {
+            Eins,
+            Zwei,
+            Drei,
+            Vier
+        }
+        static void Main(string[] args)
+        {
+            eingabeEnum();
+            ausgabeEnum();
+        }
+        public static void eingabeEnum()
+        {
+           
+        }
+        public static void ausgabeEnum()
+        {
+            foreach (Auto e in Enum.GetValues(typeof(Auto)))
+            {
+                Console.WriteLine("Enum: {0} Index: {1}",e.ToString(),e.ToString("d"));
+            }
+        }
+    }
+}
