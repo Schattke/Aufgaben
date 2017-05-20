@@ -1,0 +1,5 @@
+Schreiben Sie eine switch-Anweisung, die zu einem gegebenen Monat die Anzahl seiner Tage berechnet 
+(ohne Schaltjahre zu berücksichtigen).
+Implementieren Sie eine Version, bei der das Monat durch eine Zahl gegeben ist und eine andere, 
+bei der es durch einen String gegeben ist. 
+Vergleichen Sie den erzeugten Code mittels ildasm
