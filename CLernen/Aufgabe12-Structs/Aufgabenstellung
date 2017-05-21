@@ -9,9 +9,23 @@ mit dem man zwischen komplexen Zahlen und double konvertieren kann.
 
 Legende
 
+Zahlen
 N = natürliche Zahle {0,1,2,3}
 Z = ganze Zahlen {-2,-1,0,1,2}
 OR = Rationale Zahl {-1/2 ,0 ,+1.5}
 R = Relle Zahlen {mit pi}
 C = Komplexe Zahl {besteht aus relle Zahl und imaginäre Zahl} [Z =( a      ) + (b * i)]
                                                                   relleZahl    imaginäre
+
+Properties
+public int attribut{
+  get
+  {
+  
+  }
+  set
+  {
+    
+  }
+  
+}
