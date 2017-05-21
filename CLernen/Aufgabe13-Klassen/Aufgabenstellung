@@ -1,0 +1,4 @@
+Implementieren Sie eine Klasse GrowableArray, die ein dynamisch wachsendes Array beliebiger Objekte darstellt. 
+Ein Indexer soll den Zugriff auf die einzelnen Elemente erlauben. Wird über einen Index zugegriffen, 
+der größer als die bisherige Arraylänge ist, so soll das Array dynamisch erweitert,
+d.h. durch ein längeres ersetzt werden, wobei die Werte des alten Arrays den Anfang des neuen Arrays bilden sollen.
