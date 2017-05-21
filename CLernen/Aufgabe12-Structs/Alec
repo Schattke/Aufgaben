@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace structi
+{
+    class Program
+    {
+        public struct Complex{
+            private double Rellezahl;
+            public double relleZahl
+            {
+                get
+                {
+                    return Rellezahl;
+                }
+            }
+            private double ImaginäreZahl;
+            public double imginäreZahl
+            {
+                get
+                {
+                    return ImaginäreZahl;
+                }
+            }
+
+            public Complex(double a, double b)
+            {
+                Rellezahl = a;
+                ImaginäreZahl = b;
+            }
+
+            public static Complex operator+ (Complex a,Complex b)
+            {
+                Complex c = new Complex();
+                c.Rellezahl = a.Rellezahl + b.Rellezahl;
+                c.ImaginäreZahl = a.ImaginäreZahl + b.ImaginäreZahl;
+                return c;
+            }
+            public static Complex operator*(Complex a, Complex b)
+            {
+                Complex c = new Complex();
+                c.Rellezahl = (a.Rellezahl * b.Rellezahl) - (a.ImaginäreZahl*b.ImaginäreZahl);
+                c.ImaginäreZahl = (a.Rellezahl * b.ImaginäreZahl) + (a.ImaginäreZahl * b.Rellezahl);
+                return c;
+            }
+            public static bool operator==(Complex a, Complex b)
+            {
+                if(a.Rellezahl == b.Rellezahl && a.ImaginäreZahl == b.ImaginäreZahl)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            public static bool operator!=(Complex a, Complex b)
+            {
+                if (a.Rellezahl == b.Rellezahl && a.ImaginäreZahl == b.ImaginäreZahl)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            override
+            public String ToString()
+            {
+                return "Z = " + Rellezahl + " + " + ImaginäreZahl + " * i";
+            }
+            public override bool Equals(object obj)
+            {
+                return base.Equals(obj);
+            }
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+        }
+        static void Main(string[] args)
+        {
+            Complex einA = new Complex(3,1);
+            Complex einB = new Complex(3,1);
+            if (einA.Equals(einB))
+            {
+                Console.WriteLine("JA");
+                Console.WriteLine(einA.GetHashCode());
+            }
+
+        }
+    }
+}
