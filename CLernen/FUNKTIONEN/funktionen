@@ -1,1 +1,7 @@
 
+Klasse Exception
+Funktion
+ Message() //gibt Fehler aus
+ GetType() //gibt Typ des Fehlers aus
+ 
+
