@@ -18,14 +18,12 @@ C = Komplexe Zahl {besteht aus relle Zahl und imaginäre Zahl} [Z =( a      ) + 
                                                                   relleZahl    imaginäre
 
 Properties
-public int attribut{
+private int attribut
+public int Attribut{
   get
   {
-  
-  }
-  set
-  {
-    
-  }
-  
+    return attribut;
+  } 
 }
+
+expliziet
