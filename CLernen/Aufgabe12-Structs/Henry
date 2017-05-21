@@ -1,0 +1,107 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KomplexeZahlen
+{
+    class Program
+    {
+        public struct Complex
+        {
+                private double reel;
+                public double Reel
+                {
+                    get
+                    {
+                        return reel;
+                    }
+                }
+
+                private double img;
+                public double Img
+                {
+                    get
+                    {
+                        return img;
+                    }
+                } 
+
+                public Complex(double reel, double img)
+                {
+                    this.reel = reel;
+                    this.img = img;
+                }
+
+                public static Complex operator +(Complex a, Complex b)
+                {
+                    Complex c = new Complex();
+                    c.reel = a.reel + b.reel;
+                    c.img = a.img + b.img;
+                    return c;
+                }
+
+                public static Complex operator *(Complex a, Complex b)
+                {
+                    Complex c = new Complex();
+                    c.reel = (a.reel * b.reel) + ((a.img*b.img)*-1);
+                    c.img = (a.reel * b.img) + (a.img * b.reel);
+                    return c;
+                }
+            
+                public static bool operator ==(Complex a, Complex b)
+                {
+                    bool status = false;
+                    if (a.reel == b.reel || a.img ==b.img)
+                        status =true;
+                    return status;
+                }
+            
+                public static bool operator !=(Complex a, Complex b)
+                {
+                    bool status = false;
+                    if (a.reel != b.reel || a.img != b.img)
+                        status = true;
+                    return status;
+               }
+
+               
+               public override string ToString()
+               {
+                   return ("z = "+reel+" + "+img+"i");
+               }
+               
+               
+               public override bool Equals(object o)
+                {
+                Complex a = (Complex)o;
+                bool status = false;
+                if (this.Reel==a.Reel && this.Img==a.Img)
+                {
+                    status = true;    
+                }
+                return status;
+                } 
+            
+                public override int GetHashCode()
+                {
+                    return base.GetHashCode();
+                }
+        }
+
+
+        static void Main(string[] args)
+        {
+            Complex a = new Complex(-7,5);
+            Complex b = new Complex(-7,5);
+            Complex c = a * b;
+            Console.WriteLine(c);
+
+            Console.WriteLine("Sind a und b gleich? "+a.Equals(b));
+            Console.WriteLine("HashCode: "+b.GetHashCode());
+        }
+
+        
+    }
+}
