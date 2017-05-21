@@ -4,4 +4,4 @@ Funktion
  Message() //gibt Fehler aus
  GetType() //gibt Typ des Fehlers aus
  
-
+throw new// gibt Fehlermeldung aus
