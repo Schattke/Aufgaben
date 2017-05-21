@@ -5,3 +5,13 @@ Implementieren Sie mittels Operator Overloading die Addition, Multiplikation und
 Sehen Sie auch einen impliziten und einen expliziten Konversionsoperator vor, 
 mit dem man zwischen komplexen Zahlen und double konvertieren kann.
 Überschreiben Sie schließlich auch die von Object geerbten Methoden Equals, ToString und GetHashCode.
+
+
+Legende
+
+N = natürliche Zahle {0,1,2,3}
+Z = ganze Zahlen {-2,-1,0,1,2}
+OR = Rationale Zahl {-1/2 ,0 ,+1.5}
+R = Relle Zahlen {mit pi}
+C = Komplexe Zahl {besteht aus relle Zahl und imaginäre Zahl} [Z =( a      ) + (b * i)]
+                                                                  relleZahl    imaginäre
