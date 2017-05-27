@@ -1,0 +1,64 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GrowableArray
+{
+    class Program
+    {
+        public class wachsendesArray {
+            private object[] objektSpeicher = new object[1];
+            public void Ausgabe()
+            {
+
+            }
+            public void Erweitern()
+            {
+                Array.Resize(ref objektSpeicher, objektSpeicher.Length + 1);
+            }
+            public int Length
+            {
+                get { return objektSpeicher.Length; }
+            }
+                
+            public object this[int index]
+            {
+                get
+                {
+                    return objektSpeicher[index];
+                }
+
+                set
+                {
+                    objektSpeicher[index] = value;
+                }
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            wachsendesArray objektListe = new wachsendesArray();
+            String s = "a";
+
+            for(bool i = false;i == false;)
+            {
+                try
+                {
+                    objektListe[2] = s; //indexer erlaubt das!
+                    i = true;
+                }
+                catch (Exception e)
+                {
+                    objektListe.Erweitern();
+                }
+            }
+            
+            System.Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
+
+        }
+    }
+}
