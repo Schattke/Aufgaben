@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GrowableArray
+{
+    class Program
+    {
+        public class wachsendesArray : IEnumerable
+        {
+            private object[] objektSpeicher = new object[1];
+          
+            public void Erweitern()
+            {
+                Array.Resize(ref objektSpeicher, objektSpeicher.Length + 1);
+            }
+            public int Length
+            {
+                get { return objektSpeicher.Length; }
+            }
+                
+            public object this[int index]
+            {
+                get
+                {
+                    return objektSpeicher[index];
+                }
+
+                set
+                {
+                    objektSpeicher[index] = value;
+                }
+            }
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return (IEnumerator)GetEnumerator();
+            }
+            public IEnumerator GetEnumerator()
+            {
+                return objektSpeicher.GetEnumerator();
+            }
+        }
+
+        public class wachsendesArrayEnum : IEnumerator
+        {
+            public wachsendesArray[] _objektSpeicher;
+
+            // Enumerators are positioned before the first element
+            // until the first MoveNext() call.
+            int position = -1;
+
+            public wachsendesArrayEnum(wachsendesArray[] list)
+            {
+                _objektSpeicher = list;
+            }
+
+            public bool MoveNext()
+            {
+                position++;
+                return (position < _objektSpeicher.Length);
+            }
+
+            public void Reset()
+            {
+                position = -1;
+            }
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    return Current;
+                }
+            }
+
+            public wachsendesArray Current
+            {
+                get
+                {
+                    try
+                    {
+                        return _objektSpeicher[position];
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            wachsendesArray objektListe = new wachsendesArray();
+            String s = "a";
+
+            for(bool i = false;i == false;)
+            {
+                try
+                {
+                    objektListe[2] = s; //indexer erlaubt das!
+                    i = true;
+                }
+                catch (Exception e)
+                {
+                    objektListe.Erweitern();
+                }
+            }
+            foreach (object a in objektListe)
+            {
+                Console.WriteLine(a);
+            }
+            
+            System.Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
+
+        }
+    }
+}
