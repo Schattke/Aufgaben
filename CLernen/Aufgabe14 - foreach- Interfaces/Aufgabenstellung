@@ -1,0 +1,3 @@
+Erweitern Sie Ihre Klasse GrowableArray so, dass die Elemente im Array mittels einer foreach-Schleife durchlaufen werden können. 
+Dazu muss GrowableArray das Interface IEnumerable implementieren. 
+Studieren Sie dieses Interface in der Online-Dokumentation des .NET-SDK.
