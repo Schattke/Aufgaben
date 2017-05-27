@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Uhrzeit
+{
+    class Program
+    {
+
+        public struct Time
+        {
+            private double zeit;
+            private double sek;
+            public double _sek
+            {
+                get
+                {
+                    
+                    return sek;
+                }
+            }
+            private double min;
+            public double _min
+            {
+                get
+                {
+                    return min;
+                }
+            }
+            private double hour;
+            public double _hour
+            {
+                get
+                {
+                    return hour;
+                }
+            }
+            public Time(double hour, double min, double sek)
+            {
+                this.sek = sek;
+                this.min = min;
+                this.hour = hour;
+                zeit = (hour*3600) + (min*60) + sek;
+            }
+
+
+            public static Time operator +(Time a, Time b)
+            {
+                Time c = new Time(0,0,0);
+                c.hour = a.hour + b.hour;
+                if((a.min + b.min) >= 60)
+                {
+                    c.hour += (int)((a.min + b.min)/60);
+                    c.min = ((((a.min + b.min)) / 60)-1)*60;
+                }
+                else
+                {
+                    c.min = a.min + b.min;
+                }
+                if ((a.sek + b.sek) >= 60)
+                {
+                    c.min += (int)((a.sek + b.sek) / 60);
+                    c.sek = ((((a.sek + b.sek)) / 60) - 1) * 60;
+                }
+                else
+                    c.sek = a.sek + b.sek;
+                return c;
+            }
+
+            public override string ToString()
+            {
+                return (hour + " : "+ min + " : " + sek);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Time dinner = new Time(13,40,50);
+            Time abend = new Time(2,19,50);
+            Time c = new Time(0,0,0);
+            c = abend + dinner;
+            Console.WriteLine(c);
+            Console.ReadLine();
+        }
+    }
+}
