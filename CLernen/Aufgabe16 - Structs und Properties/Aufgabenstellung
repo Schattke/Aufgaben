@@ -1,0 +1,3 @@
+Implementieren Sie ein Struct Time zur Verwaltung von Uhrzeiten. Intern sollen Uhrzeiten in Sekunden gespeichert werden. 
+Es soll aber drei Properties geben, die den Stunden-, Minuten-, und Sekundenanteil einer Uhrzeit liefern. 
+Sehen Sie auch überladene Operatoren und Konstruktoren vor, um mit Uhrzeiten bequem rechnen zu können.
