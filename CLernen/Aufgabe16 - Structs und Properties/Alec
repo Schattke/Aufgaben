@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Input
+{
+    class Program
+    {
+        public struct Time {
+
+            private int uhrzeit;
+            private int _stunden;
+            public int stunden
+            {
+                get
+                {
+                    return _stunden;
+                }
+            }
+            private int _minuten;
+            public int minuten
+            {
+                get
+                {
+                    return _minuten;
+                }
+            }
+            private int _sekunden;
+            public int sekunden
+            {
+                get
+                {
+                    return _sekunden;
+                }
+            }
+            public Time(int h, int m, int s)
+            {
+                _stunden = h;
+                _minuten = m;
+                _sekunden = s;
+                uhrzeit = h * 3600 + m * 60 + s;
+            }
+            public static Time operator+(Time a,Time b)
+            {
+                Time c = new Time();
+                c.uhrzeit = a.uhrzeit + b.uhrzeit;
+                c._stunden = a.stunden + b.stunden;
+                c._minuten = a._minuten + b._minuten;
+                c._sekunden = a._sekunden + b._sekunden;
+                if(c._sekunden > 59)
+                {
+                    c._sekunden -= 60;
+                    c._minuten++;
+                }
+                if (c._minuten > 59)
+                {
+                    c._minuten -= 60;
+                    c._stunden++;
+                }
+                if (c._stunden > 23)
+                {
+                    throw new Exception("Addition nicht möglich");
+                }
+                return c;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Time einA = new Time(4, 45, 2);
+            Time einB = new Time(2, 23, 43);
+            Time einC = einA + einB;
+
+            Console.WriteLine("Stunden:{0} \t Minuten:{1} \t Sekunden:{2}",einC.stunden,einC.minuten,einC.sekunden);
+            Console.ReadLine();
+        }
+    }
+}
