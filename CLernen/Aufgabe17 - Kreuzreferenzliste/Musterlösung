@@ -1,0 +1,137 @@
+	
+Kreuzreferenzliste
+
+A07.cs
+ /* This program reads a C# file and generates a cross reference list for it.
+   The source code is printed with line numbers and the word list is sorted.
+   Keywords are excluded as well as words occurring in comments or strings.
+*/
+using System;
+using System.IO;
+using System.Collections;
+using System.Text;
+
+class Xref {
+  static SortedList names = new SortedList(); // the names in the cross reference list
+  static string[] keys = {
+    "abstract","as","base","bool","break","byte","case","catch","char","checked",
+    "class","const","continue","decimal","default","delegate","do","double","else",
+    "enum","event","explicit","extern","false","finally","fixed","float","for",
+    "foreach","goto","if","implicit","in","int","interface","internal","is","lock",
+    "long","namespace","new","null","object","operator","out","override","params",
+    "private","protected","public","readonly","ref","return","sbyte","sealed","short",
+    "sizeof","stackalloc","static","string","struct","this","switch","throw","true",
+    "try","typeof","uint","ulong","unchecked","unsafe","ushort","using","virtual",
+    "void","while"};
+    
+  static StreamReader r;    // source code reader
+  static StreamWriter w;    // output of cross reference list
+  static int lineNo = 1;    // current line number
+  static int c;             // current input character
+  
+  const int eof = -1;
+  
+  static int Read() {
+    c = r.Read();
+    if (c == '\n') lineNo++;
+    return c;
+  }
+  
+  // Print the source code with line numbers
+  static void PrintSourceFile() {
+    int lnr = 1;
+    string line = r.ReadLine();
+    while (line != null) {
+      w.WriteLine("{0,4} {1}", lnr++, line);
+      line = r.ReadLine();
+    }
+    w.WriteLine();
+  }
+  
+  // Return true if the word is in the keyword table
+  static bool IsKey(string word) {
+    int i = 0, j = keys.Length-1;
+    while (i <= j) {
+      int m = (i + j) / 2;
+      if (keys[m] == word) return true;
+      if (word.CompareTo(keys[m]) < 0) j = m - 1; else i = m + 1;
+    }
+    return false;
+  }
+  
+  // Read a word and add it to the cross reference list if it is not a keyword
+  static void AddWord() {
+    StringBuilder b = new StringBuilder();
+    while (Char.IsLetterOrDigit((char)c) || c == '_') {
+      b.Append((char)c);
+      c = Read();
+    }
+    string word = b.ToString();
+    if (!IsKey(word)) { // no keyword => collect line number of this word
+      ArrayList lineNumbers = (ArrayList)names[word];
+      if (lineNumbers == null) {lineNumbers = new ArrayList(); names[word] = lineNumbers;}
+      lineNumbers.Add(lineNo);
+    }
+  }
+  
+  static void SkipString(char end) {
+    for (;;) {
+      c = Read();
+      if (c == end) { c = Read(); break; }
+      else if (c == eof) break;
+      else if (c == '\\') c = Read();
+    }
+  }
+  
+  static void SkipComment() {
+    c = Read();
+    if (c == '/') {
+      do c = Read(); while (c != eof && c != '\n');
+    } else if (c == '*') {
+      c = Read();
+      do {
+       while (c != eof && c != '*') Read();
+       if (c != eof) c = Read();
+      } while (c != eof && c != '/');
+      if (c != eof) c = Read();
+    }
+  }
+  
+  // Read the source code and add all words to the cross reference list
+  static void CollectWords() {
+    c = Read();
+    while (c != eof) {
+      if (Char.IsLetter((char)c) || c == '_') AddWord();
+      else if (c == '"' || c == '\'') SkipString((char)c);
+      else if (c == '/') SkipComment();
+      else c = Read();
+    }
+  }
+  
+  // Print the cross reference list
+  static void PrintXrefList() {
+    foreach (string word in names.Keys) {
+      ArrayList lineNumbers = (ArrayList)names[word];
+      w.Write("{0, -10}", word);
+      foreach (int n in lineNumbers) w.Write(" " + n);
+      w.WriteLine();
+    }
+  }
+  
+  public static void Main(string[] arg) {
+    if (arg.Length == 1) {
+      try {
+        FileStream s1 = new FileStream(arg[0], FileMode.Open);
+        FileStream s2 = new FileStream(arg[0] + ".xref", FileMode.Create);
+        r = new StreamReader(s1);
+        w = new StreamWriter(s2);
+        PrintSourceFile();
+        s1.Seek(0, SeekOrigin.Begin);
+        CollectWords();
+        PrintXrefList();
+        r.Close(); w.Close();
+      } catch (Exception e) {
+        Console.WriteLine(e.ToString());
+      }
+    } else Console.WriteLine("-- file name expected");
+  }
