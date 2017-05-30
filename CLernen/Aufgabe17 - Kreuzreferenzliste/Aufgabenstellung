@@ -1,0 +1,8 @@
+Schreiben Sie ein Programm, das aus einem anderen C#-Programm eine Kreuzreferenzliste erzeugt. 
+Eine Kreuzreferenzliste enthält zunächst das ursprüngliche Programm mit Zeilennummern versehen und 
+dann alle im Programm vorkommenden Namen samt den Nummern der Zeilen, in denen sie vorkommen. 
+Schlüsselwörter sollen nicht als Namen gelten. 
+Hinweis: Verwenden Sie für die Namenliste eine sortierte Liste (Klasse SortedList) und 
+für die Zeilennummern ein dynamisches Array (Klasse ArrayList) pro Name. 
+Lesen Sie die Benutzung dieser Klassen in Kapitel 4 des Buches oder in der Online-Dokumentation des .NET-SDK nach.
+
