@@ -1,0 +1,4 @@
+Gegeben sei ein Array von Objekten der gleichen Art (z.B. Strings, Bruchzahlen oder sonstige Objekte). 
+Schreiben Sie eine Methode Sort(arr, compare), die das Array arr sortiert und dazu eine Vergleichsmethode compare(x, y) verwendet,
+die als Delegate übergeben wird und zwei Objekte x und y des Arrays miteinander vergleicht, 
+d.h. feststellt, ob x größer, kleiner oder gleich y ist.
