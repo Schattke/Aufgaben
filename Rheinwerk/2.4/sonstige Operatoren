@@ -1,0 +1,21 @@
+2.4.7 Sonstige OperatorenZur nächsten ÜberschriftZur vorigen Überschrift
+
+Wir sind noch nicht am Ende der Aufzählung der Operatoren von C# angelangt. Es stehen dem Entwickler noch einige besondere Operatoren zur Verfügung, mit denen Sie in den vorhergehenden Abschnitten teilweise auch schon gearbeitet haben oder die Sie im weiteren Verlauf dieses Buches noch kennenlernen werden. Der Vollständigkeit halber sind die Operatoren dieser Gruppe in Tabelle 2.12 aufgeführt.
+
+
+Operator	Beschreibung
+.         Der Punktoperator wird für den Zugriff auf die Eigenschaften oder Methoden einer Klasse verwendet, z. B. Console.ReadLine();
+
+[]        Der []-Operator wird für Arrays, Indexer und Attribute verwendet, z. B. arr[10]
+
+()        Der ()-Operator dient zwei Zwecken: Er gibt die Reihenfolge der Operationen vor und wird auch zur Typkonvertierung eingesetzt.
+
+?:        Der ?:-Operator gibt einen von zwei Werten in Abhängigkeit von einem dritten zurück. Er ist eine einfache Variante der if-Bedingungsprüfung.
+
+new       Dient zur Instanziierung einer Klasse.
+
+is        Prüft den Laufzeittyp eines Objekts mit einem angegebenen Typ.
+
+typeof    Ruft das System.Type-Objekt für einen Typ ab.
+
+checked / unchecked Steuert die Reaktion der Laufzeitumgebung bei einem arithmetischen Überlauf.
