@@ -1,0 +1,16 @@
+Entwickeln Sie eine neue Klasse, müssen Sie einem Umstand besondere Beachtung schenken: Entwerfen Sie die Klasse,
+um sie ausschließlich in der Anwendung zu verwenden, in der die Klasse definiert ist, oder beabsichtigen Sie, 
+die Klasse auch anderen Anwendungen zur Verfügung zu stellen? Diese Sichtbarkeit wird durch Zugriffsmodifizierer beschrieben. 
+Bei Klassen spielen nur zwei eine Rolle: public und internal.
+
+Die Zugriffsmodifizierer einer Klasse
+
+Modifizierer	Beschreibung
+public        Die Instanziierbarkeit einer öffentlichen Klasse unterliegt keinerlei Beschränkungen. 
+              Die Klasse kann dann auch aus anderen Anwendungen heraus instanziiert werden. 
+              Auswirkungen kann dieser Zugriffsmodifizierer nur dann zeigen, wenn die Klasse innerhalb einer Klassenbibliothek codiert wird.
+
+internal      Beabsichtigen Sie, die Sichtbarkeit einer Klasse auf die Anwendung zu beschränken, in der die Klasse definiert ist, 
+              müssen Sie die Klasse internal deklarieren. Aus einer anderen Anwendung heraus kann dann kein Objekt dieser Klasse erzeugt werden.
+
+Die Angabe des Zugriffsmodifizierers ist optional. Verzichten Sie darauf, gilt die Klasse als internal.
