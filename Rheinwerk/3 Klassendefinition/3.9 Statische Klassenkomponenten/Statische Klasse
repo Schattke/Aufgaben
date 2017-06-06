@@ -1,0 +1,27 @@
+Es gibt Klassen, die nur statische Mitglieder enthalten. Meistens handelt es sich dabei um Klassen, 
+die allgemeingültige Operationen bereitstellen. In der .NET-Klassenbibliothek gibt es davon einige, 
+die Klasse Math gehört auch dazu. Ein besonderes Merkmal statischer Klassen ist, dass sie nicht instanziiert werden können.
+
+Das folgende Listing zeigt die benutzerdefinierte Klasse Mathematics, die die beiden Methoden Add und Subtract definiert.
+
+public static class Mathematics {
+  public static double Add(params double[] values) {
+    [...]
+  }
+
+  public static double Subtract(params double[] values) {
+    [...]
+  }
+
+  [...]
+}
+Listing 3.47 Beispiel einer statischen Klasse
+
+Der Aufruf statischer Klassen erfolgt unter Angabe des Klassenbezeichners, bezogen auf die Klasse Mathematics also mit:
+
+Mathematics.Add(2, 77, 99);
+Wenn Sie static als Modifizierer einer Klasse angeben, müssen Sie die folgenden Punkte beachten:
+
+Statische Klassen dürfen nur statische Klassenmitglieder haben. Der Modifizierer static ist auch bei den Membern anzugeben.
+Statische Klassen enthalten keine Konstruktoren und können deshalb auch nicht instanziiert werden. 
+Der parameterlose Konstruktor ist implizit private.
