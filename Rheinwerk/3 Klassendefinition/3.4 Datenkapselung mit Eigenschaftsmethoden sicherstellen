@@ -1,0 +1,92 @@
+Analysieren Sie die Eigenschaft Radius etwas genauer, werden Sie auf Probleme stoßen, 
+denen bisher noch keine Aufmerksamkeit geschenkt worden ist. Was ist beispielsweise, wenn mit
+
+kreis.Radius = -12;
+dem Radius eine negative Zahl übergeben wird? 
+Sie werden mir zustimmen, dass ein negativer Wert nicht akzeptiert werden kann.
+Sinnvoll sind Werte, die größer oder gleich 0 sind. Was müssen wir also tun, um die Bedingung
+
+Radius >=  0 
+
+zu erfüllen? Theoretisch gibt es mehrere denkbare Lösungen
+(beispielsweise einen anscheinend passenderen Datentyp zu wählen oder eine entsprechende Eingabeüberprüfung). 
+Diese Ansätze sind jedoch aus mehreren Gründen schlecht. 
+Der einzig gute Ansatz ist die Überprüfung in einer Methode der Klasse selbst.
+Zu diesem Zweck bietet .NET uns Eigenschaftsmethoden an.
+
+Eigenschaftsmethoden können Sie sich als Container für zwei Subroutinen mit jeweils einem eigenen Anweisungsblock vorstellen:
+get und set. Der get-Block wird bei der Auswertung der Eigenschaft ausgeführt, 
+der set-Block, wenn der Eigenschaft ein Wert zugewiesen wird.
+
+Sehen wir uns zuerst die vollständige Implementierung der Eigenschaft Radius an, die die Forderung erfüllt, 
+die Zuweisung eines negativen Radius an ein Circle-Objekt zu verhindern und nur einen zulässigen Wert zu speichern:
+
+public class Circle {
+  private int _Radius;
+
+  // Eigenschaftsmethode
+
+  public int Radius {
+    get {
+      return _Radius; 
+    }
+    set {
+      if (value >= 0)
+        _Radius = value;
+      else
+        Console.Write("Unzulässiger negativer Wert.");
+    }
+  }
+  [...]
+}
+
+Der Wert für den Radius wird weiterhin in einem Feld gespeichert.
+Dieses ist nun allerdings nicht mehr public definiert, sondern private. 
+Private Member in einer Klasse sind nur innerhalb der Klasse sichtbar. 
+In unserem konkreten Beispiel wird damit sichergestellt, 
+dass das Feld außerhalb der Klasse Circle weder sichtbar ist noch manipuliert werden kann.
+Ganz allgemein wird dieses Prinzip als Datenkapselung bezeichnet.
+
+Die Datenkapselung ist eines der Schlüsselkonzepte der objektorientierten Programmierung, 
+zu der auch noch die später zu behandelnde Vererbung und die Polymorphie gehören.
+
+Der Zugriff auf das Feld erfolgt ausschließlich über den set- und get-Zweig der Eigenschaftsmethode.
+Da die öffentliche Eigenschaftsmethode Radius lautet, musste das private Feld aus Gründen der Eindeutigkeit umbenannt werden.
+Üblicherweise beginnen private Felder entweder mit einem Kleinbuchstaben oder es wird der öffentliche Bezeichner herangezogen,
+dem ein Unterstrich vorangestellt wird, hier _Radius.
+
+Weisen Sie der Eigenschaft Radius mit
+
+kreis.Radius = 10;
+einen Wert zu, wird in der Eigenschaftsmethode automatisch der set-Zweig ausgeführt:
+
+set {
+  if (value >= 0)
+    _Radius = value;
+  else
+    Console.Write("Unzulässiger negativer Wert.");
+}
+
+Der zugewiesene Wert wird von einem impliziten Parameter bereitgestellt, 
+der immer value heißt. Der Datentyp von value entspricht dem Datentyp der Eigenschaft,
+in unserem Beispiel ist value demnach vom Typ int. Innerhalb des set-Anweisungsblocks können Anweisungen programmiert werden, 
+die den zu übergebenden Wert auf seine Zulässigkeit hin überprüfen. 
+Natürlich können Sie auch beliebige andere Operationen in set codieren,
+beispielsweise eine Überprüfung, ob der aktuelle Benutzer überhaupt berechtigt ist, den Eigenschaftswert festzulegen.
+
+Die Auswertung der Eigenschaft mit
+
+int value = kreis.Radius;
+führt zum Aufruf des get-Blocks innerhalb der Eigenschaftsmethode:
+
+get {
+  return _Radius; 
+}
+Meistens enthält der get-Block, ähnlich wie in unserem Beispiel, 
+nur eine return-Anweisung, die den Inhalt des gekapselten Feldes an den Aufrufer zurückgibt. 
+Aber selbstverständlich dürfen Sie auch an dieser Stelle beliebige zusätzliche Operationen codieren.
+
+Üblicherweise wird das, was ich hier als Eigenschaftsmethode bezeichne, 
+einfach nur Eigenschaft genannt. Persönlich halte ich diese Bezeichnung für nicht gelungen,
+ weil meiner Meinung nach eine Objekteigenschaft nicht nur durch eine Methode beschrieben wird,
+ sondern auch durch das dazugehörige Feld, das den Wert speichert.
