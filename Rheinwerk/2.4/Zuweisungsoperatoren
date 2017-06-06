@@ -1,0 +1,22 @@
+Operator	Beschreibung
+=         x = y weist x den Wert von y zu.
+
++=        x += y weist x den Wert von x + y zu.
+
+-=        x -= y weist x den Wert von x - y zu.
+
+*=        x *= y weist x den Wert von x * y zu.
+
+/=        x /= y weist x den Wert von x / y zu.
+
+%=        x %= y weist x den Wert von x % y zu.
+
+&=        x &= y weist x den Wert von x & y zu.
+
+|=        x |= y weist x den Wert von x | y zu.
+
+^=        x ^= y weist x den Wert von x ^ y zu.
+
+<<=       x <<= y weist x den Wert von x << y zu.
+
+>>=       x >>= y weist x den Wert von x >> y zu.
