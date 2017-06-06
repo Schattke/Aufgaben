@@ -1,0 +1,46 @@
+Vorzeitiges Beenden einer Schleife mit »break«
+
+Es kann sich zur Laufzeit als erforderlich erweisen, nicht auf das Erfüllen der Abbruchbedingung zu warten, 
+sondern den Schleifendurchlauf vorzeitig zu beenden. C# stellt ein Schlüsselwort zur Verfügung,
+das uns dazu in die Lage versetzt: break.
+
+for(int i = 0; i <= 10; i++) {
+  if(i == 3)
+    break;
+  Console.WriteLine("Zähler = {0}", i);
+}
+
+Dieses Codefragment wird zu der folgenden Ausgabe an der Konsole führen:
+
+Zähler = 0
+Zähler = 1
+Zähler = 2
+
+break beendet die Schleife unabhängig von der im Schleifenkopf formulierten Abbruchbedingung und setzt den
+Programmablauf hinter dem Anweisungsblock der for-Schleife fort.
+weisungsblock der Abbruch programmiert ist. Die äußeren Schleifen sind davon nicht betroffen.
+
+
+
+Sehr ähnlich wie break verhält sich auch die Anweisung continue. 
+Die Bearbeitung des Codes in der Schleife wird zwar abgebrochen, aber die Steuerung wieder an den Schleifenkopf übergeben. 
+Mit anderen Worten: Alle Anweisungen, die zwischen continue und dem Ende des Anweisungsblocks stehen, werden übersprungen. 
+Das wollen wir uns ebenfalls an einem Codefragment ansehen:
+
+for(int i = 0; i <= 10; i++) {
+  if(i == 3)
+    continue;
+  Console.WriteLine("Zähler = {0}", i);
+}
+Listing 2.38 Abbruch eines Schleifendurchlaufs mir »break«
+
+Die Ausgabe an der Konsole sieht wie folgt aus:
+
+Zähler = 0
+Zähler = 1
+Zähler = 2
+Zähler = 4
+Zähler = 5
+[...]
+Steht der Zähler auf 3, ist die Abbruchbedingung erfüllt. Es wird continue ausgeführt mit der Folge, 
+dass die Laufzeitumgebung die folgende Ausgabeanweisung überspringt und die Schleife mit dem Zählerstand 4 fortgesetzt wird.
