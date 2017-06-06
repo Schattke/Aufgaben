@@ -1,0 +1,24 @@
+Bei der Instanziierung einer Klasse wird ein Konstruktor aufgerufen. 
+Auf Klassenbasis gibt es dazu ein Pendant, das als statischer Konstruktor oder statischer Initialisierer bezeichnet wird. 
+Der statische Konstruktor ist eine an die Klasse gebundene Methode, die nur auf die statischen Mitglieder der Klasse Zugriff hat. 
+Der Aufrufzeitpunkt ist zwar nicht bekannt, erfolgt aber auf jeden Fall, 
+bevor der erste statische Member einer Klasse ausgeführt oder eine Instanz der Klasse erzeugt wird. 
+Zudem wird der statische Konstruktor einer Klasse während eines Programmlaufs nur ein einziges Mal aufgerufen.
+
+Die Definition des statischen Konstruktors in Circle sieht folgendermaßen aus:
+
+static Circle() {[...]}
+Beachten Sie, dass ein statischer Konstruktor keinen Zugriffsmodifizierer akzeptiert. 
+Da ein statischer Konstruktor automatisch aufgerufen wird und niemals direkt,
+macht eine Parameterliste keinen Sinn – die runden Klammern sind daher grundsätzlich leer.
+
+Statische Konstruktoren bieten sich an, um komplexe Initialisierungen vorzunehmen.
+Dabei könnte es sich beispielsweise um das Auslesen von Dateien oder auch um die Initialisierung statischer Arrays handeln.
+
+Aufrufreihenfolge der Konstruktoren
+
+Statische Klasseninitialisierer und Konstruktoren sind sich in der Funktionsweise ähnlich. 
+Während ein Klasseninitialisierer Klassendaten bereitstellt, versorgen Konstruktoren die objektspezifischen Felder mit Daten. 
+Sobald Sie eine Objektvariable deklarieren, wird der statische Konstruktor ausgeführt und erst danach der Konstruktor.
+Im Bedarfsfall dürfen Sie also im Konstruktor Code implementieren
+, der die vorhergehende Initialisierung der statischen Klassenmitglieder voraussetzt.
