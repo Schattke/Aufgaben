@@ -1,0 +1,102 @@
+Bitweise Operatoren dienen dazu, auf die Bitdarstellung numerischer Operanden zuzugreifen. Dabei kann die Bitdarstellung eines numerischen Operanden sowohl abgefragt als auch manipuliert werden.
+
+
+Operator	Beschreibung
+~         Invertiert jedes Bit des Ausdrucks (Einerkomplement).
+
+|         Aus x|y resultiert ein Wert, bei dem die korrespondierenden Bits von x und y Or-verknüpft werden.
+
+&         Aus x&y resultiert ein Wert, bei dem die korrespondierenden Bits von x und y And-verknüpft werden.
+
+^         Aus x^y resultiert ein Wert, bei dem die korrespondierenden Bits von x und y Xor-verknüpft werden.
+
+<<        Aus x<<y resultiert ein Wert, der durch die Verschiebung der Bits des ersten Operanden x 
+          um die durch die im zweiten Operanden y angegebene Zahl nach links entsteht.
+
+>>        Aus x>>y resultiert ein Wert, der durch die Verschiebung der Bits des ersten Operanden x um die 
+          durch die im zweiten Operanden y angegebene Zahl nach rechts entsteht.
+          
+  Beachten Sie bitte, dass die Operatoren & und | sowohl als Vergleichsoperatoren 
+  als auch als bitweise Operatoren eingesetzt werden können.
+  Als Vergleichsoperatoren werden zwei boolesche Operanden miteinander verglichen, 
+  ein Wahrheitswert wird als Ergebnis der Operation zurückgeliefert, 
+  und die bitweisen Operatoren vergleichen die einzelnen Bits einer Speicheradresse und bilden daraus das Ergebnis. 
+  Wir sehen uns jetzt an einigen Beispielen an, wie diese Operatoren eingesetzt werden können.
+
+Beispiel 1: 
+Im Folgenden werden die beiden Literale 13 und 5 mit dem bitweisen &-Operator verknüpft:
+
+a = 13 & 5;
+Console.WriteLine(a);
+Die Bitdarstellung dieser beiden Literale sieht wie folgt aus:
+
+13 = 0000 0000 0000 1101
+ 5 = 0000 0000 0000 0101
+An der Konsole wird als Ergebnis die Zahl 5 angezeigt, was der Bitdarstellun 0000 0000 0000 0101 entspricht. 
+Wir können unser Ergebnis auch wie folgt interpretieren:
+
+Eine vorgegebene Bitsequenz kann mit dem bitweisen &-Operator daraufhin untersucht werden, 
+ob die vom rechten Operanden beschriebenen Bits in der vorgegebenen Bitfolge gesetzt sind. 
+Das ist genau dann der Fall, wenn das Ergebnis der &-Verknüpfung dasselbe Ergebnis liefert wie im rechtsseitigen Operanden angegeben.
+
+
+Beispiel 2: Verknüpfen wir nun zwei Literale mit dem bitweisen Oder-Operator |, also beispielsweise:
+
+int a = 71 | 49;
+Console.WriteLine(a);
+Die Bitdarstellung dieser beiden Literale sieht wie folgt aus:
+
+71 = 0000 0000 0100 0111
+49 = 0000 0000 0011 0001
+Das Ergebnis wird 119 lauten oder in Bitdarstellung:
+
+0000 0000 0111 0111
+
+
+Beispiel 3: Dem Xor-Operator ^ kommt ebenfalls eine ganz besondere Bedeutung zu, wie das folgende Beispiel zeigt:
+
+int a = 53;
+a = a ^ 22;
+Console.WriteLine(a);
+Sehen wir uns zunächst wieder die durch die beiden Literale beschriebenen Bitsequenzen an:
+
+53 = 0000 0000 0011 0101
+22 = 0000 0000 0001 0110
+Lassen wir uns das Ergebnis an der Konsole anzeigen, wird 35 ausgegeben. Das entspricht folgender Bitfolge:
+
+0000 0000 0010 0011
+Hier wird also das zweite, dritte und das fünfte Bit des linken Operanden invertiert – so wie es der rechte Operand vorgibt. Analysieren wir das Ergebnis, kommen wir zu der folgenden Merkregel:
+
+In einer vorgegebenen Bitsequenz können ganz bestimmte Bits mit dem bitweisen ^-Operator invertiert werden. Die Ausgangsbitfolge steht links vom Operator, und die Zahl, die die Bits repräsentiert, die invertiert werden sollen, steht rechts vom Operator.
+
+Wenden wir auf das Ergebnis ein zweites Mal den ^-Operator an, also
+
+int a = 53;
+a = a ^ 22;
+a = a ^ 22;
+wird die Variable a wieder den ursprünglichen Wert 53 beinhalten.
+
+
+
+Beispiel 4: Zum Abschluss nun noch ein Beispiel mit dem Verschiebeoperator »<<«. 
+Die Bits der Zahl 37 sollen um zwei Positionen nach links verschoben werden, und die Anzeige soll sowohl im Dezimal- 
+als auch im Hexadezimalformat erfolgen.
+
+c = 37 << 2;
+Console.WriteLine("dezimal    : {0}",c);
+Console.WriteLine("hexadezimal: 0x{0:x}",c);
+Die Zahl 37 entspricht der Bitdarstellung:
+
+0000 0000 0010 0101
+Nach der Verschiebung um die geforderten zwei Positionen nach links ergibt sich:
+
+0000 0000 1001 0100
+was wiederum der Zahl 148 oder in hexadezimaler Schreibweise 0x94 entspricht, was uns auch die Laufzeitumgebung bestätigt.
+
+Mit
+
+c = 37 >> 2;
+lautet das Ergebnis 9, was zu der folgenden Aussage führt:
+
+Bei der Bitverschiebung eines positiven Operanden mit dem <<- oder >>-Operator werden 
+die frei werdenden Leerstellen mit 0-Bits aufgefüllt.
