@@ -1,0 +1,69 @@
+Konstruktoren können wie Methoden überladen werden.
+Jeder Konstruktor enthält dabei typischerweise eine aufgrund der ihm übergebenen Argumente spezifische Implementierung.
+Manchmal kommt es vor, dass der Konstruktor einer Klasse Programmcode enthält, 
+der von einem zweiten Konstruktor ebenfalls implementiert werden muss.
+Sehen wir uns dazu die beiden parametrisierten Konstruktoren der Klasse Circle aus Listing 3.36 an:
+
+public Circle(int radius) {
+  Radius = radius;
+}
+
+public Circle(int radius, double x, double y) {
+  XCoordinate = x;
+  YCoordinate = y;
+  Radius = radius;
+}
+Es fällt auf, dass in beiden Konstruktoren der Radius des Circle-Objekts festgelegt wird.
+Es liegt nahe, zur Vereinfachung den einfach parametrisierten Konstruktor aus dem dreifach parametrisierten heraus aufzurufen.
+
+Da Konstruktoren eine besondere Spielart der Methoden darstellen und nur über den Operator new aufgerufen werden können,
+stellt C# eine syntaktische Variante bereit, 
+mit der aus einem Konstruktor heraus ein anderer Konstruktor derselben Klasse aufgerufen wird. 
+Hier kommt erneut das Schlüsselwort this ins Spiel:
+
+public Circle(int radius) {
+  Radius = radius;
+}
+
+public Circle(int radius, double x, double y) : this(radius) {
+  XCoordinate = x;
+  YCoordinate = y;
+}
+
+Die Signatur des dreifach parametrisierten Konstruktors ist um
+
+: this(radius)
+ergänzt worden. 
+Dies hat den Aufruf eines anderen Konstruktors, in unserem Fall den Aufruf des einfach parametrisierten, zur Folge. 
+Gleichzeitig wird der vom Aufrufer übergebene Radius,
+den der dreifach parametrisierte Konstruktor in seiner Parameterliste entgegennimmt, weitergeleitet.
+Der implizit aufgerufene einfach parametrisierte Konstruktor wird ausgeführt und 
+gibt die Kontrolle danach an den aufrufenden Konstruktor zurück.
+
+
+Konstruktorverkettung – die bessere Lösung
+Betrachten wir unsere drei Konstruktoren in Circle jetzt einmal aus der Distanz und nehmen wir an, 
+wir würden den dreifach parametrisierten aufrufen. 
+Dieser leitet in den zweifach parametrisierten um und dieser wiederum an den parameterlosen. 
+Solche Verkettungen über mehrere Konstruktoren hinweg können natürlich noch extremer ausfallen, 
+wenn noch mehr Konstruktoren in der Klasse eine Rolle spielen.
+Nicht nur, dass die vielen zwischengeschalteten Aufrufe eine Leistungseinbuße nach sich ziehen, 
+auch die Verteilung der Programmlogik in viele Fragmente trägt nicht dazu bei, den Code überschaubar zu halten.
+
+Aus den genannten Gründen sollten Sie ein anderes Verkettungsprinzip bevorzugen: 
+Leiten Sie immer direkt zu dem Konstruktor mit den meisten Parametern um. 
+Dieser muss dann die gesamte Initialisierungslogik enthalten.
+Soweit möglich, werden die Übergabeargumente des aufgerufenen Konstruktors weitergeleitet, ansonsten geben Sie Standardwerte an.
+
+Mit dieser Überlegung ändern sich die Konstruktoren in Circle wie folgt:
+
+public Circle() : this(0, 0, 0) {}
+
+public Circle(int radius) : this(radius, 0, 0) {}
+
+public Circle(int radius, double x, double y)
+{
+  Radius = radius;
+  XCoordinate = x;
+  YCoordinate = y;
+}
