@@ -1,0 +1,75 @@
+In der Klasse Circle sind mit Radius, XCoordinate und YCoordinate drei Eigenschaften definiert, 
+die den Zustand eines Objekts dieses Typs beschreiben.
+
+Jede Instanz der Klasse reserviert für ihre Daten einen eigenen Speicherbereich,
+der vollkommen unabhängig von den Daten anderer Objekte ist. 
+Auch alle bisher implementierten Methoden nehmen Bezug auf Objekte, da sie mit deren Daten arbeiten.
+
+Was ist aber, wenn Felder oder Methoden benötigt werden, 
+die für alle Objekte einer Klasse gleichermaßen gültig sein sollen, also ohne feste Bindung an ein bestimmtes, 
+konkretes Objekt sind? Stellen Sie sich vor, Sie beabsichtigen, in der Klasse Circle einen Zähler zu implementieren, 
+der die Aufgabe hat, die Gesamtanzahl der Circle-Objekte festzuhalten.
+Ein solcher Zähler entspricht der Forderung nach einem allgemeinen, objektunabhängigen Merkmal.
+Um den Objektzähler zu realisieren, brauchen wir ein Feld,
+das unabhängig von jedem konkreten Objekt ist und nur in einer festen Bindung zur Klasse Circle steht. 
+Der Objektzähler wäre damit als eine gemeinsame Eigenschaft aller Objekte dieses Typs zu betrachten.
+
+Probleme dieser Art, allen typgleichen Objekten klassen-, aber nicht objektgebundene Elemente zur Verfügung zu stellen,
+werden von C# durch das reservierte Wort static gelöst. Bezogen auf die Forderung nach einem Objektzähler, 
+könnte die Problemlösung wie folgt aussehen:
+
+public class Circle {
+  public static int CountCircles;
+  [...]
+}
+
+static deklarierte Felder sind nicht an ein bestimmtes Objekt gebunden, 
+sondern gehören dem Gültigkeitsbereich einer Klasse an. Sie werden als Klassenvariablen bezeichnet. 
+Demgegenüber werden an Objekte gebundene Variablen (Felder) als Instanzvariablen bezeichnet. 
+In der Klasse Circle ist das _Radius, _XCoordinate und _YCoordinate.
+
+Da Klassenvariablen unabhängig von jedem konkreten Objekt sind, ist es unzulässig, 
+sie auf einer Objektreferenz aufzurufen. Stattdessen werden sie unter Angabe des Klassenbezeichners angesprochen. 
+Den Objektzähler in Circle werten Sie daher mit
+
+int x = Circle.CountCircles;
+
+aus.
+
+Für statische Felder gelten dieselben Regeln der Datenkapselung wie für Instanzvariablen. 
+Eine Klassenvariable wie CountCircles sollte daher in derselben Weise gekapselt werden, 
+um nicht mit dem objektorientierten Paradigma der Datenkapselung zu brechen. Dazu wird sie private deklariert.
+Um den Zugriff von außerhalb sicherzustellen, implementieren wir in der Klasse Circle zusätzlich eine statische Eigenschaftsmethode.
+Damit eine Manipulation des Zählers von außen nicht möglich ist, 
+muss die Eigenschaft durch Verzicht auf den set-Accessor schreibgeschützt sein.
+
+public class Circle 
+{
+
+  // Klasseneigenschaft
+
+  private static int _CountCircles;
+  public static int CountCircles {
+    get { return _CountCircles; }
+  }
+  [...]
+}
+
+Nun enthält die Circle-Klasse den angestrebten Objektzähler. 
+Allerdings ist die Klassendefinition noch unvollständig, denn es fehlt die Programmlogik, 
+um den Zähler mit jeder neuen Objektinstanz zu erhöhen. Dazu bieten sich die Konstruktoren an.
+Hierbei nutzen wir das Prinzip der Konstruktorverkettung und erhöhen den Objektzähler nur in dem Konstruktor,
+der von anderen Initialisierungsroutinen aufgerufen wird:
+
+// Konstruktoren
+
+public Circle() : this(0, 0, 0) { }
+
+public Circle(int radius) : this(radius, 0, 0)) {  }
+
+public Circle(int radius, double x, double y) {
+  XCoordinate = x;
+  YCoordinate = y;
+  Radius = radius;
+  Circle._CountCircles++;
+}
