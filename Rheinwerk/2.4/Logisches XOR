@@ -1,0 +1,7 @@
+	
+(Xor-Operator) Der Ausdruck
+
+a ^ b
+
+ist true, wenn die beiden beteiligten Operanden unterschiedliche Wahrheitswerte haben.
+
