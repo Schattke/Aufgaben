@@ -1,0 +1,54 @@
+Die bisher behandelten Arrays können Sie sich als eine einfache Folge von Daten auf einer Geraden vorstellen.
+Sie werden als eindimensionale Arrays bezeichnet. 
+Zur Darstellung komplexer Datenstrukturen, beispielsweise räumlicher, 
+sind eindimensionale Arrays aber nicht besonders gut geeignet. 
+Daher kommen in der Praxis auch häufig zweidimensionale oder noch höher dimensionierte Arrays zum Einsatz.
+
+Ein zweidimensionales Array kann man sich als Matrix oder Tabelle vorstellen. 
+Bekanntermaßen ist jede Zelle einer Tabelle eindeutig durch die Position in einer Reihe und einer Spalte identifizierbar. 
+Um den Inhalt einer Tabellenzelle durch ein bestimmtes Array-Element zu beschreiben, 
+bietet sich ein zweidimensionales Array an: Eine Dimension beschreibt die Reihe, die andere Dimension die Spalte.
+
+Angenommen, eine Tabelle hat vier Reihen und drei Spalten, dann könnte die Deklaration
+
+int[,] zelle = new int[4,3];
+
+lauten. 
+Etwas schwieriger ist die literale Initialisierung eines mehrdimensionalen Arrays. 
+Jede Dimensionsebene wird durch ein Paar geschweifter Klammern dargestellt, 
+bei einem eindimensionalen Array also – wie oben eingangs gezeigt – durch ein Klammerpaar:
+
+{Anzahl der Elemente der ersten Dimension}
+
+Da ein zweidimensionales Array als ein Feld zu verstehen ist, 
+bei dem jedes Array-Element selbst wieder ein eigenes Feld gleichen Typs definiert, 
+wird jedes Element der Initialisierung eines eindimensionalen Arrays durch ein Paar geschweifter Klammern ersetzt, 
+in dem wiederum Werte des »Unterarrays« angegeben werden:
+
+{{Anzahl der Elemente der zweiten Dimension}, { }, ...}
+
+Die literale Zuweisung an ein zweidimensionales Array könnte demnach wie folgt aussehen:
+
+int[,] point = new int[,]{{1,2,3},{4,5,6}};
+Zulässig ist auch ebenfalls die kürzere Schreibweise mit:
+
+int[,] point = {{1,2,3},{4,5,6}};
+Diese Systematik setzt sich mit jeder weiteren Dimension fort. Beispielhaft sei das noch an einem dreidimensionalen Array gezeigt:
+
+{{{Anzahl der Elemente der dritten Dimension}, { }, ...}, { }, ...}
+
+Das folgende Codebeispiel zeigt anhand eines dreidimensionalen Arrays, 
+dass die Initialisierung mit zunehmender Dimensionstiefe schon verhältnismäßig komplex und dazu auch noch schlecht lesbar ist:
+
+int[,,] elements = { 
+                     { {1,2,3,4},{3,4,5,6},{6,7,8,9}},
+                     { {3,4,6,1},{6,19,3,4},{4,1,8,7}}
+                  };
+Das Array elements entspricht einem Array elements[2,3,4]. 
+Es weist in der dritten Dimension vier Elemente auf, in der zweiten drei und in der ersten zwei.
+
+Beim Zugriff auf ein mehrdimensionales Array muss man jede Dimension des entsprechenden Elements angeben.
+Beispielsweise schreibt die Anweisung
+
+Console.WriteLine(elements[1,1,1]);
+die Zahl 19 in das Konsolenfenster.
