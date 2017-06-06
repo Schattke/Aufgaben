@@ -1,0 +1,29 @@
+Durch die Eliminierung des set-Blocks in einer Eigenschaft können Sie diese vor unbefugtem schreibendem Zugriff schützen. 
+Dieses Verhalten kann auch innerhalb einer Felddefinition erreicht werden.
+Dazu wird die Deklaration um das reservierte Wort readonly ergänzt, z. B.:
+
+public readonly double PI = 3.14;
+Im Gegensatz zu einer const-Konstanten kann die Festlegung des Wertes einer readonly-Konstanten sowohl
+bei der Deklaration als auch innerhalb eines Konstruktors erfolgen. Das Festlegen in einer Methode ist nicht möglich.
+Eine readonly-Konstante ist besonders in den Fällen sehr gut geeignet, wenn die Konstante einen Referenztyp beschreiben soll.
+Im Gegensatz zu einer const-Konstanten wird eine readonly-Konstante auf einer Objektreferenz aufgerufen.
+
+Im folgenden Codebeispiel werden in der Klasse Coordinate die beiden Konstanten XCoordinate und YCoordinate beim Aufruf des
+Konstruktors festgelegt.
+
+class Coordinate {
+  public readonly int XCoordinate;
+  public readonly int YCoordinate;
+
+  public Coordinate(int x, int y) {
+    XCoordinate = x;
+    YCoordinate = y;
+  }
+}
+Listing 3.40 »readonly«-Konstanten definieren und einen Wert zuweisen
+
+Die Auswertung der beiden Konstanten zeigen die folgenden drei Anweisungen:
+
+Coordinate point = new Coordinate(-12, 76);
+Console.WriteLine("X: " + point.XCoordinate);
+Console.WriteLine("Y: " + point.YCoordinate);
