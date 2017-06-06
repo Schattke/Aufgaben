@@ -1,0 +1,24 @@
+Vergleichsoperatoren vergleichen zwei Ausdrücke miteinander. Der Rückgabewert ist immer ein boolescher Wert, also entweder true oder false. Vergleiche können auf Gleichheit bzw. Ungleichheit sowie auf »größer« und »kleiner« durchgeführt werden.
+
+Tabelle 2.7 Vergleichsoperatoren
+
+Operator	Beschreibung
+a == b    (Vergleichsoperator) prüft, ob der Ausdruck a dem Ausdruck b entspricht, und gibt in diesem Fall true zurück.
+
+a != b    Ergebnis der Operation ist true, wenn a ungleich b ist.
+
+a > b     Ergebnis der Operation ist true, wenn a größer b ist.
+
+a < b     Ergebnis der Operation ist true, wenn a kleiner b ist.
+
+a <= b    Ergebnis der Operation ist true, wenn a kleiner oder gleich b ist.
+
+a >= b    Ergebnis der Operation ist true, wenn a größer oder gleich b ist.
+
+Beispielcode:
+
+int value = 10;
+bool compare;
+compare = value <= 100;
+
+In compare steht true
