@@ -1,0 +1,28 @@
+Klassendefinitionen in .NET lassen sich über mehrere Quellcodedateien verteilen.
+Diese Programmiertechnik erlaubt es mehreren Entwicklern, gleichzeitig an der gleichen Klasse zu arbeiten. 
+Das Prinzip der partiellen Klassen wird auch von der Entwicklungsumgebung bei einigen Projektvorlagen genutzt,
+denn durch die Aufteilung des Klassencodes lässt sich der von Visual Studio automatisch generierte Code von dem Code,
+den der Entwickler schreibt, sauber trennen. Das verschafft nicht nur einen besseren Überblick über den eigenen Code, 
+sondern reduziert auch potenzielle Probleme, die auftreten können, 
+wenn der automatisch erzeugte Code vom Entwickler verändert werden sollte.
+
+Partielle Klassendefinitionen sind dadurch gekennzeichnet, dass man den Modifizierer partial vor alle Teildefinitionen setzt.
+Die Signatur muss in jeder Teildefinition natürlich identisch sein. 
+Nehmen wir beispielsweise an, Sie möchten die Klasse Circle auf die beiden Quellcodedateien Circle1.cs und Circle2.cs aufteilen. 
+Dann müssten die Klassendefinitionen wie folgt lauten:
+
+// in der Quellcodedatei 'Circle1.cs'
+
+partial class Circle {
+  [...]
+}
+
+// in der Quellcodedatei 'Circle2.cs'
+
+partial class Circle {
+  [...]
+}
+Listing 3.5 Partielle Klassendefinition
+
+Eine Einschränkung des Gebrauchs partieller Typen müssen Sie jedoch beachten: Alle Klassenfragmente 
+müssen sich in derselben Anwendung befinden.
