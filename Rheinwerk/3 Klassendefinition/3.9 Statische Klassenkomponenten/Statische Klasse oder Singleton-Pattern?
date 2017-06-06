@@ -1,0 +1,68 @@
+Eine statische Klasse ist sinnvoll, wenn Sie keine Instanziierung der Klasse zulassen wollen.
+Man könnte auch sagen, in der Anwendung gibt es nur ein Objekt dieses Typs, 
+obwohl der Begriff »Objekt« im Zusammenhang mit statischen Klassen nicht präzise verwendet wird. 
+Dasselbe Ziel wird auch von einem Design Pattern verfolgt, das als Singleton-Pattern bekannt ist.
+
+Als Design Pattern bezeichnet man allgemein verwendbare Lösungsansätze für immer wiederkehrende Probleme
+im Umfeld eines Softwareentwurfs. Design Patterns beschreiben also im weitestgehenden Sinn Schablonen,
+die in einem bestimmten Kontext einer Software immer wieder verwendet werden können.
+
+Betrachten wir das Singleton-Pattern an dem konkreten Beispiel der Klasse Demo.
+Ergänzend zum allgemein verwendeten Pattern beschreibt die Klasse zu Demonstrationszwecken mit Value eine Eigenschaft.
+
+public class Demo {
+  private static Demo _Instance = null;
+  public int Value { get; set;}
+
+  private Demo() { }
+
+  public static Demo Instance {
+    get {
+      if (_Instance == null) {
+        _Instance = new Demo();
+      }
+      return _Instance;
+    }
+  }
+}
+Listing 3.48 Klassendesign nach dem Singleton-Pattern
+
+Werfen wir einen Blick in die Klassendefinition.
+Es fällt auf, dass der parameterlose Standardkonstruktor private implementiert ist.
+Da kein weiterer Konstruktor in der Klasse enthalten ist, kann die Klasse nicht instanziiert werden.
+In der Klasse ist ein statisches Feld vom Typ Demo definiert. 
+Sie erinnern sich, statische Member können in einer laufenden Anwendung nur einmal existieren. 
+Mit Instance enthält die Klasse Demo auch eine statische Methode. Der Clou ist, 
+dass innerhalb der Methode das statische Feld dahingehend geprüft wird, 
+ob es ein konkretes Demo-Objekt beschreibt oder null ist. 
+Im letztgenannten Fall wird ein Demo-Objekt erzeugt und die Referenz im statischen Feld _Instance gespeichert.
+Hat das statische Feld jedoch nicht den Inhalt null, handelt es sich um ein Demo-Objekt,
+dessen Referenz an den Aufrufer der Methode Instance zurückgeliefert wird.
+
+Nein, es ist kein Widerspruch darin zu sehen, 
+dass die Klasse keinen öffentlichen Konstruktor enthält und plötzlich dennoch ein Objekt erzeugen kann.
+Der Konstruktor ist natürlich innerhalb der Klasse aufrufbar, somit kann auch ein Objekt erzeugt werden. 
+Die Logik der Methode Instance garantiert jedoch, dass nur einmal ein Demo-Objekt erzeugt werden kann.
+
+Prüfen lässt sich die Klasse ganz simpel mit dem folgenden Listing:
+
+Demo demo = Demo.Instance;
+demo.Value = 128;
+Demo demo1 = Demo.Instance;
+Console.WriteLine(demo1.Value);
+Listing 3.49 Testen eines Singleton-Klassendesigns
+
+Trotz des zweimaligen Aufrufs von Instance wird an der Konsole der Wert 128 ausgegeben – der Beweis dafür,
+dass tatsächlich nur ein Demo-Objekt existiert.
+
+Dasselbe Ergebnis können wir auch erzielen, wenn wir eine statische Klasse bereitstellen.
+Dabei können wir sogar auf die Methode Instance verzichten, der Code wird also einfacher. 
+Welche Vorteile und Nachteile zwischen dem Singleton-Pattern und einer statischen Klassendefinition sind also zu notieren?
+Im Grunde genommen beschränken sich die Unterschiede auf zwei wesentliche Punkte:
+
+Bei Verwendung des Singleton-Patterns wird tatsächlich ein Objekt erzeugt, das zu einem späteren Zeitpunkt
+vom Garbage Collector zerstört werden muss. 
+Eine statische Klasse beschreibt hingegen kein Objekt und fällt damit auch nicht in den Aufgabenbereich des Garbage Collectors.
+Ein Pluspunkt für die statische Klasse.
+Statische Klassen können nicht abgeleitet werden.
+
